@@ -1,0 +1,199 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Stack;
+
+public class ScientificCalculator extends JFrame implements ActionListener {
+
+    private JTextField display;
+    private JPanel panel;
+
+    private StringBuilder currentExpression;
+
+    private static final String[] BUTTON_TEXTS = {
+            "7", "8", "9", "/", "sin",
+            "4", "5", "6", "*", "cos",
+            "1", "2", "3", "-", "tan",
+            "0", ".", "=", "+", "log",
+            "C", "sqrt", "(", ")", "^"
+    };
+
+    public ScientificCalculator() {
+        setTitle("Scientific Calculator");
+        setSize(400, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        display = new JTextField();
+        display.setEditable(false);
+        display.setFont(new Font("Arial", Font.PLAIN, 24));
+        add(display, BorderLayout.NORTH);
+
+        panel = new JPanel();
+        panel.setLayout(new GridLayout(5, 5, 5, 5));
+        add(panel, BorderLayout.CENTER);
+
+        currentExpression = new StringBuilder();
+
+        for (String text : BUTTON_TEXTS) {
+            JButton button = new JButton(text);
+            button.setFont(new Font("Arial", Font.PLAIN, 18));
+            button.addActionListener(this);
+            panel.add(button);
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
+
+        switch (command) {
+            case "=":
+                try {
+                    double result = evaluateExpression(currentExpression.toString());
+                    display.setText(String.valueOf(result));
+                    currentExpression.setLength(0); // Clear expression
+                } catch (Exception ex) {
+                    display.setText("Error");
+                    currentExpression.setLength(0); // Clear expression
+                }
+                break;
+            case "C":
+                display.setText("");
+                currentExpression.setLength(0);
+                break;
+            case "sin":
+            case "cos":
+            case "tan":
+            case "log":
+            case "sqrt":
+                currentExpression.append(command).append("(");
+                display.setText(currentExpression.toString());
+                break;
+            default:
+                currentExpression.append(command);
+                display.setText(currentExpression.toString());
+                break;
+        }
+    }
+
+    private double evaluateExpression(String expression) {
+        try {
+            // Convert the expression to reverse Polish notation (RPN) and evaluate it
+            String rpn = convertToRPN(expression);
+            return evaluateRPN(rpn);
+        } catch (Exception e) {
+            return Double.NaN; // Return NaN if there is an error
+        }
+    }
+
+    private String convertToRPN(String expression) {
+        StringBuilder output = new StringBuilder();
+        Stack<String> stack = new Stack<>();
+
+        for (int i = 0; i < expression.length(); i++) {
+            char token = expression.charAt(i);
+
+            if (Character.isDigit(token) || token == '.') {
+                output.append(token);
+            } else if (token == '(') {
+                stack.push(String.valueOf(token));
+            } else if (token == ')') {
+                while (!stack.isEmpty() && !stack.peek().equals("(")) {
+                    output.append(" ").append(stack.pop());
+                }
+                stack.pop(); // Pop the left parenthesis
+            } else if (isOperator(token) || isFunction(token)) {
+                output.append(" ");
+                while (!stack.isEmpty() && precedence(stack.peek()) >= precedence(String.valueOf(token))) {
+                    output.append(stack.pop()).append(" ");
+                }
+                stack.push(String.valueOf(token));
+            } else if (i + 2 < expression.length() && isFunction(expression.substring(i, i + 3))) {
+                output.append(" ");
+                stack.push(expression.substring(i, i + 3));
+                i += 2;
+            }
+        }
+
+        while (!stack.isEmpty()) {
+            output.append(" ").append(stack.pop());
+        }
+
+        return output.toString();
+    }
+
+    private boolean isOperator(char token) {
+        return token == '+' || token == '-' || token == '*' || token == '/' || token == '^';
+    }
+
+    private boolean isFunction(char token) {
+        return token == 's' || token == 'c' || token == 't' || token == 'l';
+    }
+
+    private boolean isFunction(String token) {
+        return token.equals("sin") || token.equals("cos") || token.equals("tan") || token.equals("log") || token.equals("sqrt");
+    }
+
+    private int precedence(String operator) {
+        switch (operator) {
+            case "+":
+            case "-":
+                return 1;
+            case "*":
+            case "/":
+                return 2;
+            case "^":
+                return 3;
+            case "sin":
+            case "cos":
+            case "tan":
+            case "log":
+            case "sqrt":
+                return 4;
+            default:
+                return 0;
+        }
+    }
+
+    private double evaluateRPN(String rpn) {
+        Stack<Double> stack = new Stack<>();
+        String[] tokens = rpn.split(" ");
+
+        for (String token : tokens) {
+            if (token.isEmpty()) continue;
+
+            if (isOperator(token.charAt(0)) && token.length() == 1) {
+                double b = stack.pop();
+                double a = stack.pop();
+                switch (token.charAt(0)) {
+                    case '+': stack.push(a + b); break;
+                    case '-': stack.push(a - b); break;
+                    case '*': stack.push(a * b); break;
+                    case '/': stack.push(a / b); break;
+                    case '^': stack.push(Math.pow(a, b)); break;
+                }
+            } else if (isFunction(token)) {
+                double a = stack.pop();
+                switch (token) {
+                    case "sin": stack.push(Math.sin(Math.toRadians(a))); break;
+                    case "cos": stack.push(Math.cos(Math.toRadians(a))); break;
+                    case "tan": stack.push(Math.tan(Math.toRadians(a))); break;
+                    case "log": stack.push(Math.log10(a)); break;
+                    case "sqrt": stack.push(Math.sqrt(a)); break;
+                }
+            } else {
+                stack.push(Double.parseDouble(token));
+            }
+        }
+
+        return stack.pop();
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            ScientificCalculator calculator = new ScientificCalculator();
+            calculator.setVisible(true);
+        });
+    }
+}
