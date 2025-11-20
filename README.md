@@ -2,7 +2,7 @@
 
 ## 👋 Hello! I'm Pallav Karn
 
-I’m a **Coder** and **ECE Student** with a passion for building **Java-based systems** from the ground up. I specialize in creating efficient backend solutions and love working on **OOP principles**, **data structures**, and **algorithms** to optimize performance. Additionally, I’m constantly learning and exploring **full-stack development** to further broaden my skill set.
+I’m a Coder and ECE Graduate with a passion for building Frontend and Backend systems from the ground up. I specialize in creating efficient backend solutions and love working on clean architecture, scalable APIs, OOP principles, and data structures & algorithms to deliver high-performance applications.
 
 ---
 
