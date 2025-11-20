@@ -7,21 +7,15 @@ I’m a **Coder** and **ECE Student** with a passion for building **Java-based s
 ---
 
 ### 🚀 Working on:
-- **[Digital Clock with Pomodoro Timer](https://github.com/your-github/digital-clock)**: A live digital clock with a Pomodoro timer, relaxation mode, and stopwatch, built using Java AWT/Swing.
-
+- 
 ---
 
 ### 📂 Projects:
-- **[Java Online Food Delivery System](https://github.com/your-github/food-delivery-system)**: A case study demonstrating OOP concepts like inheritance and polymorphism.
-- **[Java Banking System](https://github.com/your-github/banking-system)**: A complete core Java banking system with a Swing-based UI.
+- **[Digital Clock with Pomodoro Timer](https://github.com/AV7001/Digital-Clock-and-Pomodoro)**
+- **[Telecom Site Management System](https://github.com/AV7001/telecome))**
+- **[Excel Converter](https://github.com/AV7001/Excel-Converter))**
 
 
----
-
-### 🎉 Hackathon Projects:
-- **[Pomodoro Tracker App](https://github.com/your-github/pomodoro-tracker-app)**: A productivity app built during a hackathon to help users manage their tasks efficiently.
-
----
 
 ### 🎨 Frontend Projects:
 - **[First Portfolio](https://github.com/your-github/FirstPortfolio)**: My very first portfolio website as part of my web development journey.
@@ -36,7 +30,7 @@ I’m a **Coder** and **ECE Student** with a passion for building **Java-based s
 - **SQL**
 - **HTML/CSS/JavaScript**
 - **Data Structures and Algorithms**
-- **Backend Development**
+
 - **Frontend Development**
 
 ---
@@ -44,11 +38,11 @@ I’m a **Coder** and **ECE Student** with a passion for building **Java-based s
 
 
 ### 🤝 Connect with me:
-- **[LinkedIn](https://www.linkedin.com)** 
+- **[LinkedIn](https://www.linkedin.com/pallavkarn)** 
 - **[Medium](https://medium.com)** 
 - **[Twitter](https://twitter.com)** 
-- **[Gmail](mailto:your-email@gmail.com)** 
+- **[Gmail](mailto:pallavkarn199@gmail.com)** 
 
 ---
 
-✨ **Enjoying  Coding!** ✨
+✨ **Enjoying  Coding! Enjoy Life** ✨
