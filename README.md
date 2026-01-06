@@ -7,8 +7,8 @@ I’m a Coder and ECE Graduate with a passion for building Frontend and Backend 
 ---
 
 ### 🚀 Working on:
-- 
----
+-[E-Commerce Market]** 
+--- 
 
 ### 📂 Projects:
 - **[Digital Clock with Pomodoro Timer](https://github.com/AV7001/Digital-Clock-and-Pomodoro)**
