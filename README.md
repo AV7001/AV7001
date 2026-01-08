@@ -18,9 +18,7 @@ I’m a Coder and ECE Graduate with a passion for building Frontend and Backend 
 
 
 ### 🎨 Frontend Projects:
-- **[First Portfolio](https://github.com/your-github/FirstPortfolio)**: My very first portfolio website as part of my web development journey.
-- **TechShip Website**: (Link to repo)
-- **E-Commerce Website**: (Link to repo)
+- **[First Portfolio](https://av7001.github.io/Portfolio/))**: My very first portfolio website as part of my web development journey.
 
 ---
 
@@ -31,10 +29,7 @@ I’m a Coder and ECE Graduate with a passion for building Frontend and Backend 
 - **HTML/CSS/JavaScript**
 - **Data Structures and Algorithms**
 
-- **Frontend Development**
-
----
-
+-
 
 
 ### 🤝 Connect with me:
